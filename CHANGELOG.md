@@ -4,6 +4,10 @@ All notable changes to poetry-source-env will be documented here. Breaking chang
 
 poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-0-1">[1.0.1] - 2023-04-29</a>
+
+No user-facing changes are introduced in this release.
+
 ## <a name="1-0-0">[1.0.0] - 2023-04-29</a>
 
 This is the initial release of poetry-env-source.
