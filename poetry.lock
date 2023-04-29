@@ -254,21 +254,6 @@ crashtest = ">=0.4.1,<0.5.0"
 rapidfuzz = ">=2.2.0,<3.0.0"
 
 [[package]]
-name = "click"
-version = "8.1.3"
-description = "Composable command line interface toolkit"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
-    {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
-]
-
-[package.dependencies]
-colorama = {version = "*", markers = "platform_system == \"Windows\""}
-
-[[package]]
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
@@ -436,22 +421,6 @@ files = [
 [package.extras]
 docs = ["furo (>=2023.3.27)", "sphinx (>=6.1.3)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.2.3)", "diff-cover (>=7.5)", "pytest (>=7.3.1)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest-timeout (>=2.1)"]
-
-[[package]]
-name = "fontawesomepro"
-version = "6.4.0"
-description = "Font Awesome Pro Files"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "fontawesomepro-6.4.0-py3-none-any.whl", hash = "sha256:ab6bbf52b111f88381e7f818c3e3b961581f0bbfafa5ca7a8325821b39e0c506"},
-]
-
-[package.source]
-type = "legacy"
-url = "https://dl.fontawesome.com/378FA3D1-48AF-47DE-B3D0-037A7F592036/fontawesome-pro/python/simple"
-reference = "fontawesome"
 
 [[package]]
 name = "html5lib"
@@ -792,22 +761,6 @@ trove-classifiers = ">=2022.5.19"
 urllib3 = ">=1.26.0,<2.0.0"
 virtualenv = ">=20.4.3,<20.4.5 || >20.4.5,<20.4.6 || >20.4.6,<21.0.0"
 xattr = {version = ">=0.10.0,<0.11.0", markers = "sys_platform == \"darwin\""}
-
-[[package]]
-name = "poetry-aliases"
-version = "1.0.1"
-description = "Create aliases for Poetry commands"
-category = "main"
-optional = false
-python-versions = ">=3.7,<4.0"
-files = [
-    {file = "poetry_aliases-1.0.1-py3-none-any.whl", hash = "sha256:8d1958934190bc8d9a0b11970612bc8904e1308e9b25e960f36a7d1173431ade"},
-    {file = "poetry_aliases-1.0.1.tar.gz", hash = "sha256:15652fcdf2b4a8e55b16bf4e86f1c1975090b8198edc7b87770418fbffb0c488"},
-]
-
-[package.dependencies]
-click = ">=8.1.3,<9.0.0"
-poetry = ">=1.3.2,<2.0.0"
 
 [[package]]
 name = "poetry-core"
@@ -1282,4 +1235,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "d6516ccd0ff50621294070ec8bf9b2199731e77a8f0598469fca074d2e424bd3"
+content-hash = "43b6b1f9785d403eac597e36eda2d8295eecc2c1f3a2fc310326c229531d6c20"

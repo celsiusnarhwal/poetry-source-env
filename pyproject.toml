@@ -7,9 +7,15 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8"
 poetry = "^1.2"
-poetry-aliases = "^1.0.1"
+
+[tool.black]
+target-version = ["py38"]
+line-length = 88
+
+[tool.isort]
+profile = "black"
 
 [tool.poetry.plugins."poetry.plugin"]
 poetry-source-env = "poetry_source_env.plugin:PoetrySourcePlugin"
