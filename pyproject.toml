@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-source-env"
-version = "0.1.0"
+version = "1.0.0"
 description = "Load Poetry package sources from environment variables"
 authors = ["celsius narhwal <hello@celsiusnarhwal.dev>"]
 readme = "README.md"
