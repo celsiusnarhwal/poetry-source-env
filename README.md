@@ -70,11 +70,11 @@ poetry-source-env's behavior can be configured via the `tool.poetry-source-env` 
 
 Supported configuration options include:
 
-| **Name** | **Type** | **Description**                                                                                                                   | **Required?** | **Default**          |
-| -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------------- |
-| `prefix` | string   | The prefix which poetry-source-env should expect source-defining environment variables to use. Has no effect if `env` is `false`. | No            | POETRY*REPOSITORIES* |
-| `env`    | boolean  | Whether to read package source definitions from environment variables.                                                            | No            | `true`               |
-| `toml`   | boolean  | Whether to expand environment variables in the `tool.poetry.source` section of `pyproject.toml`.                                  | No            | `true`               |
+| **Name** | **Type** | **Description**                                                                                                                   | **Required?** | **Default**            |
+| -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------- |
+| `prefix` | string   | The prefix which poetry-source-env should expect source-defining environment variables to use. Has no effect if `env` is `false`. | No            | `POETRY_REPOSITORIES_` |
+| `env`    | boolean  | Whether to read package source definitions from environment variables.                                                            | No            | `true`                 |
+| `toml`   | boolean  | Whether to expand environment variables in the `tool.poetry.source` section of `pyproject.toml`.                                  | No            | `true`                 |
 
 ## License
 
