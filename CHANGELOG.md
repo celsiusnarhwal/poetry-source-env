@@ -8,7 +8,7 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
 
 ### Added
 
-- poetry-source-env can now expand environment variables in the `[tool.poetry.source]` section of `pyproject.toml`.
+- poetry-source-env can now expand environment variables in the `tool.poetry.source` section of `pyproject.toml`.
   For example, this:
 
   ```bash
@@ -31,7 +31,7 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
 
   ```
 
-- poetry-source-env's behavior can now be configured via the `[tool.poetry-source-env]` section of `pyproject.toml`.
+- poetry-source-env's behavior can now be configured via the `tool.poetry-source-env` section of `pyproject.toml`.
   Available configuration options are documented in the [README](README.md#configuration).
 
 ## <a name="1-0-1">[1.0.1] - 2023-04-29</a>
