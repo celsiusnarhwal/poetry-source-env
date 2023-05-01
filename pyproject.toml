@@ -11,6 +11,8 @@ repository = "https://github.com/celsiusnarhwal/poetry-source-env"
 [tool.poetry.dependencies]
 python = "^3.8"
 poetry = "^1.2"
+pydantic = "^1.10.7"
+dict-deep = "^4.1.2"
 
 [tool.black]
 target-version = ["py38"]
