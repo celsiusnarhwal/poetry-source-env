@@ -43,11 +43,11 @@ class PoetrySourcePlugin(Plugin):
             for name, repository in repositories.items():
                 repo = LegacyRepository(name, repository["url"])
                 default = (
-                    os.getenv(f"POETRY_REPOSITORIES_{repository['env_name']}_DEFAULT")
+                    os.getenv(f"{config.prefix}{repository['env_name']}_DEFAULT")
                     == "true"
                 )
                 secondary = (
-                    os.getenv(f"POETRY_REPOSITORIES_{repository['env_name']}_SECONDARY")
+                    os.getenv(f"{config.prefix}{repository['env_name']}_SECONDARY")
                     == "true"
                 )
 

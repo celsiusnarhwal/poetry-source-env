@@ -4,6 +4,13 @@ All notable changes to poetry-source-env will be documented here. Breaking chang
 
 poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-1-1">[1.1.1] - 2023-05-02</a>
+
+### Fixed
+
+- Fixed a bug where poetry-source-env would not respect the `prefix` setting for environment variables defining the
+  priority of a source.
+
 ## <a name="1-1-0">[1.1.0] - 2023-05-01</a>
 
 ### Added

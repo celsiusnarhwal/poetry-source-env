@@ -25,8 +25,8 @@ Normally, you would define a package source in `pyproject.toml` like this:
 
 ```toml
 [[tool.poetry.source]]
-name = "my-epic-source"
-url = "https://pkg.celsiusnarhwal.dev"
+name = "foo"
+url = "https://foo.bar/simple"
 default = false
 secondary = false
 
@@ -36,22 +36,23 @@ With poetry-source-env, you can define this source via environment variables, si
 configure [publishable repositories](https://python-poetry.org/docs/repositories/#publishable-repositories:~:text=Alternatively%2C%20you%20can%20use%20environment%20variables%20to%20provide%20the%20credentials%3A):
 
 ```bash
-export POETRY_REPOSITORIES_MY_EPIC_SOURCE_URL=https://pkg.celsiusnarhwal.dev
-export POETRY_REPOSITORIES_MY_EPIC_SOURCE_DEFAULT=false
-export POETRY_REPOSITORIES_MY_EPIC_SOURCE_SECONDARY=false
+export POETRY_REPOSITORIES_FOO_URL=https://foo.bar/simple
+export POETRY_REPOSITORIES_FOO_DEFAULT=false
+export POETRY_REPOSITORIES_FOO_SECONDARY=false
 ```
 
-If you prefer to keep the source defined in `pyproject.toml`, you can opt to conceal parts of its definition behind
-environment variables:
+If you prefer to keep the source defined in `pyproject.toml`, you can opt to conceal its name or URL, in whole or
+in part, behind environment variables:
 
 ```bash
-export INDEX_URL="https://pkg.celsiusnarhwal.dev"
+export FOO_INDEX_NAME="foo"
+export FOO_INDEX_URL="https://foo.bar/simple"
 ```
 
 ```toml
 [[tool.poetry.source]]
-name = "my-epic-source"
-url = "${INDEX_URL}"
+name = "${FOO_INDEX_NAME}"
+url = "${FOO_INDEX_URL}"
 default = false
 secondary = false
 
@@ -60,8 +61,8 @@ secondary = false
 If your source requires authentication, Poetry already supports defining its credentials via environment variables:
 
 ```bash
-export POETRY_HTTP_BASIC_MY_EPIC_SOURCE_USERNAME=celsiusnarhwal
-export POETRY_HTTP_BASIC_MY_EPIC_SOURCE_PASSWORD=superdupersecret
+export POETRY_HTTP_BASIC_FOO_USERNAME=celsiusnarhwal
+export POETRY_HTTP_BASIC_FOO_PASSWORD=superdupersecret
 ```
 
 ## Configuration
