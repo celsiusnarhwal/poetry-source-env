@@ -15,6 +15,9 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
   export POETRY_REPOSITORIES_FOO_PRIORITY=primary
   ```
 
+  poetry-source-env does not allow the `secondary` priority to be set via environment variables as Poetry has
+  deprecated it.
+
   For more information, see [Poetry's documentation](https://python-poetry.org/docs/repositories/#package-sources).
 
 ### Removed
