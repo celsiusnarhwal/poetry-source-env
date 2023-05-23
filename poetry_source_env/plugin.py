@@ -4,10 +4,11 @@ from os.path import expandvars
 
 from cleo.io.io import IO
 from dict_deep import deep_get
-from poetry.core.toml.file import TOMLFile
 from poetry.plugins.plugin import Plugin
 from poetry.poetry import Poetry
 from poetry.repositories.legacy_repository import LegacyRepository
+from poetry.repositories.repository_pool import Priority
+from poetry.toml.file import TOMLFile
 from pydantic import BaseSettings, validate_arguments
 from typing_extensions import Self
 
@@ -42,16 +43,21 @@ class PoetrySourcePlugin(Plugin):
 
             for name, repository in repositories.items():
                 repo = LegacyRepository(name, repository["url"])
-                default = (
-                    os.getenv(f"{config.prefix}{repository['env_name']}_DEFAULT")
-                    == "true"
-                )
-                secondary = (
-                    os.getenv(f"{config.prefix}{repository['env_name']}_SECONDARY")
-                    == "true"
+
+                priority_name = os.getenv(
+                    f"{config.prefix}{repository['env_name']}_PRIORITY", "primary"
                 )
 
-                poetry.pool.add_repository(repo, default, secondary)
+                priorities = {
+                    "default": Priority.DEFAULT,
+                    "primary": Priority.PRIMARY,
+                    "supplemental": Priority.SUPPLEMENTAL,
+                    "explicit": Priority.EXPLICIT,
+                }
+
+                priority = priorities.get(priority_name.casefold(), Priority.PRIMARY)
+
+                poetry.pool.add_repository(repo, priority=priority)
 
         if config.toml:
             for repository in poetry.pool.repositories:
@@ -69,6 +75,4 @@ class PoetrySourcePlugin(Plugin):
                     repo = LegacyRepository(
                         expandvars(definition.name), expandvars(definition.url)
                     )
-                    poetry.pool.add_repository(
-                        repo, definition.default, definition.secondary
-                    )
+                    poetry.pool.add_repository(repo, priority=definition.priority)

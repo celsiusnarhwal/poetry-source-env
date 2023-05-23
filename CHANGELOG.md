@@ -4,6 +4,26 @@ All notable changes to poetry-source-env will be documented here. Breaking chang
 
 poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="2-0-0">[2.0.0] - 2023-05-23</a>
+
+### Added
+
+- Source priority can now be configured via environment variables. For example:
+
+  ```bash
+  export POETRY_REPOSITORIES_FOO_URL=https://foo.bar/simple
+  export POETRY_REPOSITORIES_FOO_PRIORITY=primary
+  ```
+
+  For more information, see [Poetry's documentation](https://python-poetry.org/docs/repositories/#package-sources).
+
+### Removed
+
+- 🚩 poetry-source-env now requires Poetry 1.5.0 or later. If you need support for Poetry 1.4 or earlier, use
+  poetry-source-env 1.1.1.
+- 🚩 The `default` and `secondary` attributes of package sources are no longer configurable via environment variables
+  following their deprecation in Poetry 1.5.0 (see #1, python-poetry/poetry#7658).
+
 ## <a name="1-1-1">[1.1.1] - 2023-05-02</a>
 
 ### Fixed
@@ -19,12 +39,12 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
   For example, this:
 
   ```bash
-  export INDEX_URL="https://pkg.celsiusnarhwal.dev"
+  export INDEX_URL="https://foo.bar/simple"
   ```
 
   ```toml
   [[tool.poetry.source]]
-  name = "my-epic-source"
+  name = "foo"
   url = "${INDEX_URL}"
 
   ```
@@ -33,8 +53,8 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
 
   ```toml
   [[tool.poetry.source]]
-  name = "my-epic-source"
-  url = "https://pkg.celsiusnarhwal.dev"
+  name = "foo"
+  url = "https://foo.bar/simple"
 
   ```
 

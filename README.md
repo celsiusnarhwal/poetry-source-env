@@ -27,8 +27,7 @@ Normally, you would define a package source in `pyproject.toml` like this:
 [[tool.poetry.source]]
 name = "foo"
 url = "https://foo.bar/simple"
-default = false
-secondary = false
+priority = "supplemental"
 
 ```
 
@@ -37,8 +36,7 @@ configure [publishable repositories](https://python-poetry.org/docs/repositories
 
 ```bash
 export POETRY_REPOSITORIES_FOO_URL=https://foo.bar/simple
-export POETRY_REPOSITORIES_FOO_DEFAULT=false
-export POETRY_REPOSITORIES_FOO_SECONDARY=false
+export POETRY_REPOSITORIES_FOO_PRIORITY=supplemental
 ```
 
 If you prefer to keep the source defined in `pyproject.toml`, you can opt to conceal its name or URL, in whole or
@@ -53,8 +51,7 @@ export FOO_INDEX_URL="https://foo.bar/simple"
 [[tool.poetry.source]]
 name = "${FOO_INDEX_NAME}"
 url = "${FOO_INDEX_URL}"
-default = false
-secondary = false
+priority = "supplemental"
 
 ```
 
