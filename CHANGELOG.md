@@ -22,7 +22,7 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
 - 🚩 poetry-source-env now requires Poetry 1.5.0 or later. If you need support for Poetry 1.4 or earlier, use
   poetry-source-env 1.1.1.
 - 🚩 The `default` and `secondary` attributes of package sources are no longer configurable via environment variables
-  following their deprecation in Poetry 1.5.0 (see #1, python-poetry/poetry#7658).
+  following their deprecation in Poetry 1.5.0 (see celsiusnarhwal/poetry-source-env#1, python-poetry/poetry#7658).
 
 ## <a name="1-1-1">[1.1.1] - 2023-05-02</a>
 
