@@ -13,6 +13,10 @@ variables in the `tool.poetry.source` section of `pyproject.toml`.
 This plugin is intended as a workaround for python-poetry/poetry#5958 and will be deprecated if comparable functionality
 is ever implemented in Poetry itself.
 
+Note that poetry-source-env cannot resolve repositories when installing other Poetry plugins (Poetry does not
+load plugins when running `poetry self` commands). If you need a python-poetry/poetry#5958 workaround for installing Poetry
+plugins, see https://github.com/python-poetry/poetry/issues/5958#issuecomment-1479183720.
+
 ## Installation
 
 ```bash
