@@ -60,19 +60,9 @@ class PoetrySourcePlugin(Plugin):
                 poetry.pool.add_repository(repo, priority=priority)
 
         if config.toml:
-            for repository in poetry.pool.repositories:
-                definition = next(
-                    (
-                        source
-                        for source in poetry.get_sources()
-                        if source.name == repository.name
-                    ),
-                    None,
+            for repository in poetry.get_sources():
+                poetry.pool.remove_repository(repository.name)
+                repo = LegacyRepository(
+                    expandvars(repository.name), expandvars(repository.url)
                 )
-
-                if definition:
-                    poetry.pool.remove_repository(repository.name)
-                    repo = LegacyRepository(
-                        expandvars(definition.name), expandvars(definition.url)
-                    )
-                    poetry.pool.add_repository(repo, priority=definition.priority)
+                poetry.pool.add_repository(repo, priority=repository.priority)
