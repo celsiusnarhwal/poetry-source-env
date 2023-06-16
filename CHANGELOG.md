@@ -78,6 +78,6 @@ No user-facing changes are introduced in this release.
 
 ## <a name="1-0-0">[1.0.0] - 2023-04-29</a>
 
-This is the initial release of poetry-env-source.
+This is the initial release of poetry-source-env.
 
 [^1]: Based on [Keep a Changelog](https://keepachangelog.com).
