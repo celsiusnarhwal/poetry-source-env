@@ -6,6 +6,8 @@ poetry-source-env adheres to [semantic versioning](https://semver.org/spec/v2.0.
 
 ## <a name="2-0-1">[2.0.1] - 2023-06-15</a>
 
+### Fixed
+
 - Fixed a bug where poetry-source-env would not acknowledge sources defined in `pyproject.toml` with a priority of
   `explicit`. (celsiusnarhwal/poetry-source-env#2)
 
