@@ -30,23 +30,41 @@ class PoetrySourcePlugin(Plugin):
     def activate(self, poetry: Poetry, io: IO = None) -> None:
         config: PSPConfig = PSPConfig.load(poetry.pyproject.file)
 
+        def update_sources(poetry: Poetry, repo: Repository):
+            poetry_config = poetry.pyproject.poetry_config
+            new_config = {
+                "name": repo.name.lower(),
+                "priority": poetry.pool.get_priority(repo.name).name,
+            }
+            if new_config["name"] != "pypi":
+                new_config["url"] = repo.url
+
+            for index, old_source in enumerate(poetry_config.get("source", [])):
+                if old_source.get("name") == new_config["name"]:
+                    poetry_config["source"][index].update(new_config)
+                    break
+            else:
+                poetry_config.setdefault("source", [])
+                poetry_config["source"].append(new_config)
+
         def add_or_replace_repository(
-            pool: RepositoryPool, repo: Repository, priority: Priority
+            poetry: Poetry, repo: Repository, priority: Priority
         ) -> None:
             # replace DEFAULT priority with PRIMARY
             if priority is Priority.DEFAULT:
                 for _repo in (
                     x
-                    for x in pool.all_repositories
-                    if pool.get_priority(x.name) is Priority.DEFAULT
+                    for x in poetry.pool.all_repositories
+                    if poetry.pool.get_priority(x.name) is Priority.DEFAULT
                 ):
-                    pool.remove_repository(_repo.name)
+                    poetry.pool.remove_repository(_repo.name)
                     poetry.pool.add_repository(_repo, priority=Priority.PRIMARY)
 
             # remove repository if already exists
-            if pool.has_repository(repo.name):
-                pool.remove_repository(repo.name)
+            if poetry.pool.has_repository(repo.name):
+                poetry.pool.remove_repository(repo.name)
             poetry.pool.add_repository(repo, priority=priority)
+            update_sources(poetry, repo)
 
         if config.env:
             repositories = {}
@@ -80,11 +98,13 @@ class PoetrySourcePlugin(Plugin):
 
                 priority = priorities.get(priority_name.casefold(), Priority.PRIMARY)
 
-                add_or_replace_repository(poetry.pool, repo, priority)
+                add_or_replace_repository(poetry, repo, priority)
 
         if config.toml:
-            for repository in poetry.get_sources():
+            for cfg_repo in (
+                x for x in poetry.get_sources() if x.name.lower() != "pypi"
+            ):
                 repo = LegacyRepository(
-                    expandvars(repository.name), expandvars(repository.url)
+                    expandvars(cfg_repo.name), expandvars(cfg_repo.url)
                 )
-                add_or_replace_repository(poetry.pool, repo, priority)
+                add_or_replace_repository(poetry, repo, priority)
