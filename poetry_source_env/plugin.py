@@ -1,29 +1,28 @@
+from dataclasses import dataclass
 import os
 import re
 from os.path import expandvars
 
 from cleo.io.io import IO
-from dict_deep import deep_get
 from poetry.plugins.plugin import Plugin
 from poetry.poetry import Poetry
 from poetry.repositories.legacy_repository import LegacyRepository
 from poetry.repositories.repository import Repository
 from poetry.repositories.repository_pool import Priority, RepositoryPool
 from poetry.toml.file import TOMLFile
-from pydantic import BaseSettings, validate_arguments
-from typing_extensions import Self
 
 
-class PSPConfig(BaseSettings):
+@dataclass
+class PSPConfig:
     prefix: str = "POETRY_REPOSITORIES_"
     env: bool = True
     toml: bool = True
 
     @classmethod
-    @validate_arguments(config=dict(arbitrary_types_allowed=True))
-    def load(cls, file: TOMLFile) -> Self:
+    def load(cls, file: TOMLFile) -> "PSPConfig":
         pyproject = file.read()
-        return cls.parse_obj(deep_get(pyproject, "tool.poetry-source-env") or {})
+        config = pyproject.get("tool", {}).get("poetry-source-env") or {}
+        return cls(**config)
 
 
 class PoetrySourcePlugin(Plugin):

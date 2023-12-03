@@ -10,12 +10,14 @@ repository = "https://github.com/celsiusnarhwal/poetry-source-env"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dict-deep = "^4.1.2"
 poetry = "^1.5.0"
-pydantic = "^1.10.7"
 
 [tool.poetry.plugins."poetry.plugin"]
 poetry-source-env = "poetry_source_env.plugin:PoetrySourcePlugin"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
 
 [tool.black]
 target-version = ["py38"]
