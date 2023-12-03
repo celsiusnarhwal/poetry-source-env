@@ -36,6 +36,7 @@ class TestSourceEnv:
         with patch.dict(
             environ,
             {
+                "POETRY_REPOSITORIES_PYPI_URL": "https://example.com/simple",
                 "POETRY_REPOSITORIES_PYPI_PRIORITY": "secondary",
             },
         ):
